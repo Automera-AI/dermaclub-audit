@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DermaClub Clinics — Free Automation Audit by Automera</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#F9FAFB;
+  --text:#1E2530;
+  --text-light:#5A6474;
+  --accent:#3B7A9E;
+  --accent-light:#E6F0F5;
+  --green:#4A8B5C;
+  --green-light:#E7F2EA;
+  --gold:#B08D3E;
+  --gold-light:#FAF5E8;
+  --red:#C45555;
+  --red-light:#FCEAEA;
+  --section-bg:#EFF2F5;
+  --border:#D8DDE4;
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;
+  --mono:'JetBrains Mono',monospace;
+}
+html{font-size:16px;scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--text);background:var(--bg);line-height:1.65;-webkit-font-smoothing:antialiased}
+.container{max-width:700px;margin:0 auto;padding:0 24px}
+section{padding:72px 0}
+section+section{border-top:1px solid var(--border)}
+.header{padding:40px 0 32px;border-bottom:1px solid var(--border)}
+.header-inner{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px}
+.header-brand{font-family:var(--sans);font-weight:600;font-size:0.85rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-light)}
+.header-meta{font-size:0.8rem;color:var(--text-light)}
+.header-title{margin-top:32px}
+.header-title h1{font-family:var(--serif);font-weight:500;font-size:2.1rem;line-height:1.25;color:var(--text)}
+.header-title h1 em{font-style:italic;color:var(--accent)}
+.header-subtitle{margin-top:12px;font-size:0.95rem;color:var(--text-light);max-width:560px}
+.eyebrow{font-family:var(--sans);font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+section h2{font-family:var(--serif);font-weight:500;font-size:1.55rem;line-height:1.3;margin-bottom:20px}
+section p{font-size:0.95rem;color:var(--text-light);margin-bottom:16px;max-width:620px}
+section p:last-child{margin-bottom:0}
+.est{display:inline-block;background:var(--gold-light);color:var(--gold);font-size:0.65rem;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;padding:2px 7px;border-radius:4px;margin-left:6px;vertical-align:middle}
+
+/* Stat cards */
+.stat-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:32px 0}
+.stat-card{background:var(--section-bg);border-radius:10px;padding:28px 20px;text-align:center}
+.stat-card.highlight{background:var(--red-light)}
+.stat-number{font-family:var(--mono);font-size:2.4rem;font-weight:500;color:var(--text);line-height:1}
+.stat-card.highlight .stat-number{color:var(--red)}
+.stat-unit{font-family:var(--sans);font-size:0.78rem;color:var(--text-light);margin-top:6px;line-height:1.35}
+
+/* Big stat */
+.big-stat{background:var(--section-bg);border-radius:12px;padding:40px 36px;margin:32px 0;text-align:center}
+.big-stat .stat-number{font-size:3.4rem}
+.big-stat .stat-unit{font-size:1rem;margin-top:8px}
+.big-stat .stat-note{font-size:0.78rem;color:var(--accent);margin-top:12px;font-weight:500}
+
+/* Questions */
+.questions{margin:28px 0}
+.q-row{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--border);font-size:0.88rem}
+.q-row:first-child{border-top:1px solid var(--border)}
+.q-label{color:var(--text)}
+.q-freq{font-family:var(--mono);font-size:0.82rem;color:var(--accent);flex-shrink:0;margin-left:16px}
+
+/* Branch pain visual */
+.branch-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:8px;margin:28px 0}
+.branch-dot{background:#fff;border:1px solid var(--border);border-radius:8px;padding:14px 8px;text-align:center;font-size:0.72rem;color:var(--text-light);line-height:1.3}
+.branch-dot .icon{font-size:1.4rem;margin-bottom:4px}
+.branch-dot strong{display:block;font-size:0.75rem;color:var(--text);font-weight:600}
+
+/* Flow comparison */
+.flow-compare{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:32px 0}
+.flow-box{border-radius:12px;padding:24px 20px}
+.flow-box.before{background:#fff;border:1px solid var(--border)}
+.flow-box.after{background:var(--green-light);border:1px solid #BDD8C4}
+.flow-title{font-size:0.75rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-light);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.flow-title .dot{width:8px;height:8px;border-radius:50%}
+.flow-title .dot.red{background:var(--red)}
+.flow-title .dot.green{background:var(--green)}
+.flow-step{font-size:0.82rem;color:var(--text-light);padding:8px 0;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:flex-start}
+.flow-box.after .flow-step{border-color:#BDD8C4}
+.flow-step:last-child{border-bottom:none}
+.flow-step .num{font-family:var(--mono);font-size:0.7rem;font-weight:600;color:var(--accent);flex-shrink:0;margin-top:2px}
+.flow-box.after .flow-step .num{color:var(--green)}
+.flow-step strong{font-weight:600;color:var(--text)}
+.flow-box.after .flow-step strong{color:#2A4A33}
+.flow-total{margin-top:12px;font-family:var(--mono);font-size:0.85rem;font-weight:500;text-align:right}
+.flow-total.red{color:var(--red)}
+.flow-total.green{color:var(--green)}
+
+/* Breakdown */
+.breakdown{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:32px 0}
+.breakdown-item{background:#fff;border:1px solid var(--border);border-radius:10px;padding:24px 20px}
+.breakdown-item .label{font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-light);margin-bottom:8px}
+.breakdown-item .value{font-family:var(--mono);font-size:1.8rem;font-weight:500;line-height:1}
+.breakdown-item .detail{font-size:0.78rem;color:var(--text-light);margin-top:6px}
+.breakdown-item.highlight{background:var(--gold-light);border-color:#DED0A6}
+.breakdown-item.highlight .value{color:var(--gold)}
+.breakdown-item.positive .value{color:var(--green)}
+
+/* ROI table */
+.roi-table{margin:28px 0;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.roi-row{display:flex;justify-content:space-between;align-items:baseline;padding:16px 20px;font-size:0.88rem}
+.roi-row+.roi-row{border-top:1px solid var(--border)}
+.roi-row.total{background:var(--section-bg);font-weight:600}
+.roi-label{color:var(--text)}
+.roi-value{font-family:var(--mono);font-size:0.9rem;font-weight:500}
+.roi-value.save{color:var(--green)}
+.roi-value.cost{color:var(--text)}
+
+/* CTA */
+.cta-section{text-align:center;padding:64px 0 80px}
+.cta-section h2{margin-bottom:12px}
+.cta-section p{margin:0 auto 28px;text-align:center}
+.cta-button{display:inline-block;background:var(--accent);color:#fff;font-family:var(--sans);font-size:0.9rem;font-weight:600;padding:14px 36px;border-radius:8px;text-decoration:none;transition:background 0.2s}
+.cta-button:hover{background:#2E6480}
+
+/* Footer */
+.footer{padding:32px 0;border-top:1px solid var(--border);font-size:0.75rem;color:var(--text-light);line-height:1.7}
+.footer .brand{font-weight:600;color:var(--text)}
+
+@media(max-width:640px){
+  .header-title h1{font-size:1.65rem}
+  section h2{font-size:1.3rem}
+  .stat-row{grid-template-columns:1fr}
+  .flow-compare{grid-template-columns:1fr}
+  .breakdown{grid-template-columns:1fr}
+  .branch-grid{grid-template-columns:repeat(auto-fill,minmax(70px,1fr))}
+  section{padding:48px 0}
+  .big-stat .stat-number{font-size:2.6rem}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header class="header">
+    <div class="header-inner">
+      <div class="header-brand">Automera</div>
+      <div class="header-meta">Prepared 20 August 2026</div>
+    </div>
+    <div class="header-title">
+      <h1>14 branches, one <em>bottleneck</em></h1>
+      <p class="header-subtitle">An audit of DermaClub Clinics' booking and enquiry flow, the hours it costs across branches, and what automation changes.</p>
+    </div>
+  </header>
+
+  <!-- Section 1: Scale -->
+  <section>
+    <div class="eyebrow">The scale</div>
+    <h2>DermaClub by the numbers</h2>
+    <p>Six years from 3 branches to 14 across Egypt and Riyadh. First clinic in Egypt with membership packages. First to bring Primelase laser. 249K Instagram followers. The growth is real.</p>
+    <div class="stat-row">
+      <div class="stat-card">
+        <div class="stat-number">14</div>
+        <div class="stat-unit">branches across Egypt + Riyadh</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">249K</div>
+        <div class="stat-unit">Instagram followers</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">16098</div>
+        <div class="stat-unit">one hotline for all of it</div>
+      </div>
+    </div>
+    <p>But every single booking, pricing question, and branch enquiry still goes through the same channels: a phone call to 16098, an Instagram DM, or a walk-in. At 14 branches and 249K followers, that volume is enormous.</p>
+  </section>
+
+  <!-- Section 2: The repeat questions -->
+  <section>
+    <div class="eyebrow">The repeat loop</div>
+    <h2>The same questions, hundreds of times a day</h2>
+    <p>Across 14 branches and Instagram, your reception teams are fielding the same enquiries on loop. These are the ones that eat the most time:</p>
+    <div class="questions">
+      <div class="q-row"><span class="q-label">"How much is laser hair removal?"</span><span class="q-freq">~60x / day</span></div>
+      <div class="q-row"><span class="q-label">"Which branch is closest to me / has availability?"</span><span class="q-freq">~40x / day</span></div>
+      <div class="q-row"><span class="q-label">"What are your current offers?"</span><span class="q-freq">~35x / day</span></div>
+      <div class="q-row"><span class="q-label">"Do you have installments / do you take Sympl?"</span><span class="q-freq">~25x / day</span></div>
+      <div class="q-row"><span class="q-label">"Can I reschedule / cancel my appointment?"</span><span class="q-freq">~20x / day</span></div>
+    </div>
+    <p>Every one of these has a fixed answer. None of them need a dermatologist. None of them even need a human.</p>
+    <p style="font-size:0.78rem;color:var(--text-light)">Frequencies are estimates based on branch count, follower volume, and typical call patterns for multi-branch clinics at this scale. <span class="est">estimate</span></p>
+  </section>
+
+  <!-- Section 3: The branch multiplication problem -->
+  <section>
+    <div class="eyebrow">The multiplication problem</div>
+    <h2>Every new branch multiplies the same problem</h2>
+    <p>At 3 branches, one receptionist per location could handle it. At 14, the math breaks. Each branch has its own reception desk answering the same questions independently. Nobody at the Maadi branch knows what slots are open in Heliopolis.</p>
+    <div class="branch-grid">
+      <div class="branch-dot"><span class="icon">📞</span><strong>Branch 1</strong>"How much is laser?"</div>
+      <div class="branch-dot"><span class="icon">📞</span><strong>Branch 2</strong>"Any slots today?"</div>
+      <div class="branch-dot"><span class="icon">📞</span><strong>Branch 3</strong>"Where are you?"</div>
+      <div class="branch-dot"><span class="icon">📞</span><strong>Branch 4</strong>"How much is laser?"</div>
+      <div class="branch-dot"><span class="icon">📞</span><strong>Branch 5</strong>"Do you do Sympl?"</div>
+      <div class="branch-dot"><span class="icon">📞</span><strong>Branch 6</strong>"How much is laser?"</div>
+      <div class="branch-dot"><span class="icon">📞</span><strong>Branch 7</strong>"Current offers?"</div>
+      <div class="branch-dot"><span class="icon">📞</span><strong>Branch 8</strong>"How much is laser?"</div>
+      <div class="branch-dot"><span class="icon">📞</span><strong>Branch 9</strong>"Can I cancel?"</div>
+      <div class="branch-dot"><span class="icon">📞</span><strong>Branch 10</strong>"Closest branch?"</div>
+      <div class="branch-dot"><span class="icon">📞</span><strong>Branch 11</strong>"How much is laser?"</div>
+      <div class="branch-dot"><span class="icon">📞</span><strong>Branch 12</strong>"Any slots today?"</div>
+      <div class="branch-dot"><span class="icon">📞</span><strong>Branch 13</strong>"How much is laser?"</div>
+      <div class="branch-dot"><span class="icon">📞</span><strong>Branch 14</strong>"Current offers?"</div>
+    </div>
+    <p>Same question, fourteen times, answered by fourteen different people, none of whom needed to be interrupted for it.</p>
+  </section>
+
+  <!-- Section 4: The invisible cost -->
+  <section>
+    <div class="eyebrow">The invisible cost</div>
+    <h2>What this adds up to</h2>
+    <p>At 14 branches with an average of 15 to 25 pricing/booking enquiries per branch per day, plus Instagram DM volume from 249K followers, we estimate:</p>
+    <div class="big-stat">
+      <div class="stat-number">200+</div>
+      <div class="stat-unit">hours every month on questions with fixed answers <span class="est">estimate</span></div>
+      <div class="stat-note">That is 2 to 3 full-time receptionists doing nothing but answering "how much is laser?"</div>
+    </div>
+    <p>And those are the calls that get answered. The ones that come in after hours, or ring during a busy afternoon and go to voicemail? Those patients book somewhere else. At 249K followers, even a small percentage of missed DMs is significant lost revenue.</p>
+  </section>
+
+  <!-- Section 5: Current vs automated flow -->
+  <section>
+    <div class="eyebrow">Before and after</div>
+    <h2>What a booking looks like now vs. with Watcher</h2>
+    <div class="flow-compare">
+      <div class="flow-box before">
+        <div class="flow-title"><span class="dot red"></span> Current flow</div>
+        <div class="flow-step"><span class="num">1</span><span>Patient calls 16098 or sends IG DM</span></div>
+        <div class="flow-step"><span class="num">2</span><span>Receptionist answers pricing question</span></div>
+        <div class="flow-step"><span class="num">3</span><span>Patient asks about offers / installments</span></div>
+        <div class="flow-step"><span class="num">4</span><span>Receptionist explains current promotions</span></div>
+        <div class="flow-step"><span class="num">5</span><span>Patient asks which branch is closest</span></div>
+        <div class="flow-step"><span class="num">6</span><span>Receptionist checks and books manually</span></div>
+        <div class="flow-total red">~8 to 12 min per enquiry</div>
+      </div>
+      <div class="flow-box after">
+        <div class="flow-title"><span class="dot green"></span> With Watcher</div>
+        <div class="flow-step"><span class="num">1</span><span><strong>Patient messages on WhatsApp.</strong> Watcher replies instantly with pricing, current offers, and nearest branch.</span></div>
+        <div class="flow-step"><span class="num">2</span><span><strong>Patient picks a branch and time.</strong> Watcher confirms the booking and sends a reminder.</span></div>
+        <div class="flow-step"><span class="num">3</span><span><strong>Reception gets a clean notification.</strong> Patient name, service, branch, time. No phone call needed.</span></div>
+        <div class="flow-total green">Under 2 minutes. Works at 3am.</div>
+      </div>
+    </div>
+    <p>Same booking. A fraction of the time. And it works after hours, on weekends, and during Ramadan rush, when the phone lines are busiest.</p>
+  </section>
+
+  <!-- Section 6: The numbers -->
+  <section>
+    <div class="eyebrow">What changes</div>
+    <h2>The math, conservatively</h2>
+    <div class="breakdown">
+      <div class="breakdown-item positive">
+        <div class="label">Hours saved</div>
+        <div class="value">150+</div>
+        <div class="detail">hours / month across all branches <span class="est">est</span></div>
+      </div>
+      <div class="breakdown-item highlight">
+        <div class="label">Missed enquiries recovered</div>
+        <div class="value">100+</div>
+        <div class="detail">after-hours + unanswered / month <span class="est">est</span></div>
+      </div>
+      <div class="breakdown-item positive">
+        <div class="label">Equivalent FTEs freed</div>
+        <div class="value">2-3</div>
+        <div class="detail">receptionists redeployed to patient care</div>
+      </div>
+      <div class="breakdown-item">
+        <div class="label">Payback period</div>
+        <div class="value">~2</div>
+        <div class="detail">months from recovered bookings + saved time</div>
+      </div>
+    </div>
+
+    <div class="roi-table">
+      <div class="roi-row">
+        <span class="roi-label">Watcher Receptionist (WhatsApp + IG auto-reply)</span>
+        <span class="roi-value cost">EGP 50,000</span>
+      </div>
+      <div class="roi-row">
+        <span class="roi-label">Multi-branch availability + routing</span>
+        <span class="roi-value cost">EGP 20,000</span>
+      </div>
+      <div class="roi-row">
+        <span class="roi-label">After-hours capture + appointment reminders</span>
+        <span class="roi-value cost">EGP 15,000</span>
+      </div>
+      <div class="roi-row total">
+        <span class="roi-label">Total build</span>
+        <span class="roi-value cost">EGP 85,000 / $1,683</span>
+      </div>
+      <div class="roi-row">
+        <span class="roi-label">This audit</span>
+        <span class="roi-value save">Credited in full if we build</span>
+      </div>
+    </div>
+    <p>At an estimated EGP 30,000 to 60,000/month in receptionist time savings and recovered bookings, the build pays for itself in under 3 months, conservatively. Real numbers require a short discovery call to verify call volumes and branch-level data. <span class="est">estimate</span></p>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <h2>Interested?</h2>
+    <p>A 20-minute call to walk through your actual call volumes and branch data. No commitment. If the numbers don't work, we'll tell you.</p>
+    <a href="https://wa.me/message/AUTOMERA" class="cta-button">Message Ali on WhatsApp</a>
+  </section>
+
+  <footer class="footer">
+    <span class="brand">Automera</span><br>
+    This audit is free and yours to keep regardless of whether we work together. All figures marked <span class="est">estimate</span> are projections based on publicly available data (branch count, follower volume, service pricing, and industry benchmarks for multi-branch clinics). Actual numbers will differ. USD/EGP rate: 50.52 (20 Aug 2026).
+  </footer>
+
+</div>
+</body>
+</html>
